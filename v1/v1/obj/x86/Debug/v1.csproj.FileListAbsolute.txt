@@ -50,3 +50,21 @@ C:\Users\Usuario\Desktop\SO\Semana 4\proyecto-1.1\proyecto\v1\v1\bin\Debug\v1.pd
 C:\Users\Usuario\Desktop\SO\Semana 4\proyecto-1.1\proyecto\v1\v1\obj\x86\Debug\v1.Inicio.resources
 C:\Users\Usuario\Desktop\SO\Semana 4\proyecto-1.1\proyecto\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
 C:\Users\Usuario\Desktop\SO\Semana 4\proyecto-1.1\proyecto\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.Cache
+C:\Users\Usuario\Desktop\SO\Semana5\proyecto\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\Semana5\proyecto\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\Semana5\proyecto\v1\v1\bin\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\Semana5\proyecto\v1\v1\bin\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\Semana5\proyecto\v1\v1\obj\x86\Debug\v1.Inicio.resources
+C:\Users\Usuario\Desktop\SO\Semana5\proyecto\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+C:\Users\Usuario\Desktop\SO\Semana5\proyecto\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.Cache
+C:\Users\Usuario\Desktop\SO\Semana5\proyecto\v1\v1\obj\x86\Debug\v1.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Desktop\SO\Semana5\proyectoV2\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\Semana5\proyectoV2\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\PROYECTO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\PROYECTO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\PROYECTO\v1\v1\bin\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\PROYECTO\v1\v1\bin\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\PROYECTO\v1\v1\obj\x86\Debug\v1.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Desktop\SO\PROYECTO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+C:\Users\Usuario\Desktop\SO\PROYECTO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+C:\Users\Usuario\Desktop\SO\PROYECTO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.Cache

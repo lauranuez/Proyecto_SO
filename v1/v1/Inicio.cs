@@ -19,7 +19,7 @@ namespace v1
         {
             InitializeComponent();
             IPAddress direc = IPAddress.Parse("192.168.56.101");
-            IPEndPoint ipep = new IPEndPoint(direc, 9070);
+            IPEndPoint ipep = new IPEndPoint(direc, 9060);
 
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -170,6 +170,18 @@ namespace v1
 
             server.Shutdown(SocketShutdown.Both);
             server.Close();
+        }
+
+        private void listaUsuarios_Click(object sender, EventArgs e)
+        {
+            string mensaje = "6/";
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+            byte[] msg2 = new byte[80];
+            server.Receive(msg2);
+            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+            MessageBox.Show(mensaje);
         }
     }
 }
