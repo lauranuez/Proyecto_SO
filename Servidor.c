@@ -17,6 +17,11 @@ typedef struct{
 	int num;
 } ListaConectados;
 
+ListaConectados UsuariosConectados;
+
+//Estructura necesaria para acceso excluyente
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
 int Add (ListaConectados *lista, char nombre[20])
 //Añade el usuario que se a conectado a la lista
 {
@@ -40,9 +45,7 @@ void DameConectados (ListaConectados *lista, char conectados[512])
 
 void *AtenderCliente (void *socket)
 {
-	ListaConectados UsuariosConectados;
-	UsuariosConectados.num=0;
-	
+		
 	int sock_conn;
 	int *s;
 	s= (int *) socket;
@@ -125,7 +128,10 @@ void *AtenderCliente (void *socket)
 						if(strcmp(row[1],password)==0)
 						{
 							strcpy(respuesta,"1\0");
+							
+							pthread_mutex_lock( &mutex ); //No me interrumpe ahora
 							int res = Add(&UsuariosConectados,usuario);
+							pthread_mutex_unlock( &mutex );
 							
 							if (res==0)
 							{
@@ -341,6 +347,7 @@ void *AtenderCliente (void *socket)
 
 int main(int argc, char *argv[])
 {	
+	UsuariosConectados.num=0;
 	int sock_conn, sock_listen;
 	struct sockaddr_in serv_adr;
 	
