@@ -8,18 +8,21 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace v1
 {
     public partial class Inicio : Form
     {
         Socket server;
+        Thread atender;
 
         public Inicio()
         {
             InitializeComponent();
-            IPAddress direc = IPAddress.Parse("192.168.56.101");
-            IPEndPoint ipep = new IPEndPoint(direc, 9060);
+            CheckForIllegalCrossThreadCalls = false;
+            IPAddress direc = IPAddress.Parse("192.168.56.102");
+            IPEndPoint ipep = new IPEndPoint(direc, 9050);
 
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -34,13 +37,63 @@ namespace v1
                 //Si hay excepcion imprimimos error y salimos del programa con return
                 //Close() ;
             }
+            ThreadStart ts = delegate { AtenderServidor(); };
+            atender = new Thread(ts);
+            atender.Start();
         }
 
         string usuario;
         string contraseña;
         int edad;
 
-
+        private void AtenderServidor()
+        {
+            while (true)
+            {
+                byte[] msg2 = new byte[80];
+                server.Receive(msg2);
+                string[] trozos = Encoding.ASCII.GetString(msg2).Split('/');
+                int codigo = Convert.ToInt32(trozos[0]);
+                string mensaje = trozos[1].Split('\0')[0];
+                
+                switch (codigo)
+                { 
+                    case 1:
+                                if (mensaje == "1")
+                                {
+                                    MessageBox.Show("Usuario y contraseña correctos");
+                                }
+                                else
+                                    MessageBox.Show("Los datos introducidos no son los correctos");
+                                break;
+                    case 2:
+                                if (mensaje == "1")
+                                {
+                                    MessageBox.Show("Usuario registrado correctamente");
+                                }
+                                else if (mensaje == "0")
+                                    MessageBox.Show("Estos datos ya estan registrados");
+                                break;
+                    case 3:
+                                if (mensaje == "0")
+                                {
+                                    MessageBox.Show("No existe esta partida");
+                                }
+                                else
+                                    MessageBox.Show(mensaje);
+                                break;
+                    case 4:
+                                MessageBox.Show(mensaje);
+                                break;
+                    case 5:
+                                MessageBox.Show(mensaje);
+                                break;
+                    case 6:
+                                Conectadoslbl.Text=mensaje;
+                                break;
+                }
+            }
+        }
 
 
         private void aceptarBtn_Click(object sender, EventArgs e)
@@ -52,16 +105,7 @@ namespace v1
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-
-            if (mensaje == "1")
-            {
-                MessageBox.Show("Usuario y contraseña correctos");
-            }
-            else
-                MessageBox.Show("Los datos introducidos no son los correctos");
+            
 
         }
 
@@ -85,16 +129,9 @@ namespace v1
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+           
 
-            if (mensaje == "1")
-            {
-                MessageBox.Show("Usuario registrado correctamente");
-            }
-            else if (mensaje =="0")
-                MessageBox.Show("Estos datos ya estan registrados");
+            
         }
 
         private void query_Click(object sender, EventArgs e)
@@ -123,16 +160,9 @@ namespace v1
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+               
 
-                if (mensaje =="0")
-                {
-                    MessageBox.Show("No existe esta partida");
-                }
-                else
-                    MessageBox.Show( mensaje);
+                
 
             }
             else if (NombresGanadores.Checked)
@@ -141,10 +171,8 @@ namespace v1
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                MessageBox.Show( mensaje);
+                
+                
             }
             else
             {
@@ -152,10 +180,8 @@ namespace v1
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                MessageBox.Show(mensaje);
+                
+                
   
             }
         }
@@ -164,10 +190,13 @@ namespace v1
         private void Inicio_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            string mensaje = "0/";
+            usuario = usuario_tBx.Text;
+            string mensaje = "0/" + usuario;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
+            atender.Abort();
+            this.BackColor = Color.Gray;
             server.Shutdown(SocketShutdown.Both);
             server.Close();
         }
@@ -178,10 +207,21 @@ namespace v1
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show(mensaje);
+            
+            
+        }
+
+        private void desconectar_Click(object sender, EventArgs e)
+        {
+            usuario = usuario_tBx.Text;
+            string mensaje = "0/"+usuario;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+            atender.Abort();
+            this.BackColor = Color.Gray;
+            server.Shutdown(SocketShutdown.Both);
+            server.Close();
         }
     }
 }

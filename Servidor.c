@@ -22,15 +22,21 @@ ListaConectados UsuariosConectados;
 //Estructura necesaria para acceso excluyente
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
+int i;
+int sockets[100];
+char notificacion[512];
+
 int Add (ListaConectados *lista, char nombre[20])
 //Añade el usuario que se a conectado a la lista
 {
+	
 	if (lista->num == 300)
 		return -1;
 	else {
 		strcpy(lista->usuarios[lista->num].usuario, nombre);
 		lista->num++;
 		return 0;
+		
 	}
 	
 }
@@ -38,9 +44,36 @@ int Add (ListaConectados *lista, char nombre[20])
 
 void DameConectados (ListaConectados *lista, char conectados[512])
 {
-	strcpy(conectados, lista->usuarios[0].usuario);
-	for(int i=1; i< lista->num; i++)
-		sprintf(conectados,"%s, %s", conectados, lista->usuarios[i].usuario);
+	sprintf(conectados,"6/%s", lista->usuarios[0].usuario);
+	for(int j=1; j< lista->num; j++)
+		sprintf(conectados,"%s, %s", conectados, lista->usuarios[j].usuario);
+	//for(int k=0; k<i; k++)
+		//write (sockets[k], conectados, strlen(conectados));
+		
+}
+
+int DesconectarUsuario(ListaConectados *lista, char nombre[20])
+{
+	int j=0;
+	int encontrado=0;
+	while((j<lista->num) && !encontrado){
+		if (strcmp(lista->usuarios[j].usuario,nombre)==0)
+			encontrado=1;
+		if(!encontrado)
+			j=j+1;
+	}
+	if (encontrado)
+	{
+		for(int pos=j; pos<lista->num-1; pos++)
+			strcpy(lista->usuarios[pos].usuario,lista->usuarios[pos+1].usuario);
+		lista->num--;
+		return 0;
+	}
+	
+	else
+		return -1;
+		
+	
 }
 
 void *AtenderCliente (void *socket)
@@ -97,6 +130,21 @@ void *AtenderCliente (void *socket)
 		
 		if (codigo==0)
 		{
+			char usuario;
+			p=strtok(NULL, "/");
+			strcpy(&usuario, p);
+			pthread_mutex_lock( &mutex );
+			int eliminar = DesconectarUsuario(&UsuariosConectados, &usuario);
+			pthread_mutex_unlock( &mutex );
+			sprintf(notificacion,"6/%s", UsuariosConectados.usuarios[0].usuario);
+			for(int j=1; j< UsuariosConectados.num; j++)
+				sprintf(notificacion,"%s, %s", notificacion, UsuariosConectados.usuarios[j].usuario);
+			for(int k=0; k<i; k++)
+				write (sockets[k], notificacion, strlen(notificacion));
+			if (eliminar==0)
+				printf("El usuario se ha eliminado de la lista de conectados\n");
+			else
+				printf("El usuario no se ha podido eliminar de la lista de conectados\n");
 			terminar=1;
 		}
 		
@@ -127,11 +175,16 @@ void *AtenderCliente (void *socket)
 					{
 						if(strcmp(row[1],password)==0)
 						{
-							strcpy(respuesta,"1\0");
+							strcpy(respuesta,"1/1");
 							
 							pthread_mutex_lock( &mutex ); //No me interrumpe ahora
 							int res = Add(&UsuariosConectados,usuario);
 							pthread_mutex_unlock( &mutex );
+							sprintf(notificacion,"6/%s", UsuariosConectados.usuarios[0].usuario);
+							for(int j=1; j< UsuariosConectados.num; j++)
+								sprintf(notificacion,"%s, %s", notificacion, UsuariosConectados.usuarios[j].usuario);
+							for(int k=0; k<i; k++)
+								write (sockets[k], notificacion, strlen(notificacion));
 							
 							if (res==0)
 							{
@@ -142,7 +195,7 @@ void *AtenderCliente (void *socket)
 						}
 						else 
 						{
-							strcpy(respuesta,"0\0");
+							strcpy(respuesta,"1/0");
 						}
 						row = NULL;
 					}
@@ -183,15 +236,15 @@ void *AtenderCliente (void *socket)
 				strcpy(name,row[0]);
 				while (row !=NULL) 
 				{
-					strcpy(respuesta, "1\0");
+					strcpy(respuesta, "2/1");
 					if (strcmp (name,usuario) ==0)
 					{
-						strcpy(respuesta,"0\0");
+						strcpy(respuesta,"2/0");
 					}
 					else row = mysql_fetch_row (resultado);
 				}
 			}
-			if (strcmp(respuesta,"1\0")==0)
+			if (strcmp(respuesta,"2/1")==0)
 			{
 				char edads[3];
 				strcpy(consulta, "INSERT INTO datos_jugador VALUES('");
@@ -232,10 +285,10 @@ void *AtenderCliente (void *socket)
 			row = mysql_fetch_row(resultado);
 			
 			if (row == NULL)
-				strcpy(respuesta,"Base de datos vacia");
+				strcpy(respuesta,"3/Base de datos vacia");
 			else
 			{
-				strcpy(respuesta,"Los jugadores son: ");
+				strcpy(respuesta,"3/Los jugadores son: ");
 				while (row!=NULL)
 				{
 					int cont = atoi(row[1]);
@@ -246,8 +299,8 @@ void *AtenderCliente (void *socket)
 					}
 					row = mysql_fetch_row(resultado);
 				}
-				if (strcmp(respuesta,"Los jugadores son: ")==0)
-					strcpy(respuesta,"Esta ID no corresponde a ninguna partida (prueba 1 o 2)");
+				if (strcmp(respuesta,"3/Los jugadores son: ")==0)
+					strcpy(respuesta,"3/Esta ID no corresponde a ninguna partida (prueba 1 o 2)");
 				
 				
 			}	
@@ -269,10 +322,10 @@ void *AtenderCliente (void *socket)
 			resultado = mysql_store_result (conn);
 			row = mysql_fetch_row (resultado);
 			if (row == NULL)
-				strcpy(respuesta, "Base de datos vacia");
+				strcpy(respuesta, "4/Base de datos vacia");
 			else
 			{
-				strcpy (respuesta, "Los ganadores son :");
+				strcpy (respuesta, "4/Los ganadores son :");
 				while (row !=NULL) 
 				{
 					strcat (respuesta, row[4]); 
@@ -309,7 +362,7 @@ void *AtenderCliente (void *socket)
 			resultado = mysql_store_result (conn);
 			row = mysql_fetch_row (resultado);
 			if (row == NULL)
-				strcpy(respuesta, "Base de datos vacia");
+				strcpy(respuesta, "5/Base de datos vacia");
 			else
 			{
 				
@@ -321,7 +374,7 @@ void *AtenderCliente (void *socket)
 				strcpy(fecha, row[1]);
 				strcpy(hf,row[2]);
 				strcpy(nme,row[4]);
-				sprintf(respuesta, "ID: %d, Fecha: %s, Hora final: %s, Duracion: %dmin, Ganador: %s", Npartida,fecha,hf,atoi(row[3]),nme);
+				sprintf(respuesta, "5/ID: %d, Fecha: %s, Hora final: %s, Duracion: %dmin, Ganador: %s", Npartida,fecha,hf,atoi(row[3]),nme);
 			}
 		}
 		if (codigo==6)
@@ -364,15 +417,14 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// escucharemos en el port 9050
-	serv_adr.sin_port = htons(9060);
+	serv_adr.sin_port = htons(9050);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind\n");
 	//La cola de peticiones pendientes no podr? ser superior a 4
 	if (listen(sock_listen, 2) < 0)
 		printf("Error en el Listen");
 	
-	int i;
-	int sockets[100];
+	
 	pthread_t thread[100];
 	i=0;
 	for(;;)

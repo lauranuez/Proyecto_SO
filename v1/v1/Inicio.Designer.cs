@@ -52,6 +52,9 @@
             this.NombresPartida = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
             this.listaUsuarios = new System.Windows.Forms.Button();
+            this.Conectadoslbl = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.desconectar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // aceptarBtn
@@ -184,7 +187,7 @@
             // query
             // 
             this.query.Location = new System.Drawing.Point(908, 391);
-            this.query.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.query.Margin = new System.Windows.Forms.Padding(4);
             this.query.Name = "query";
             this.query.Size = new System.Drawing.Size(117, 28);
             this.query.TabIndex = 32;
@@ -195,7 +198,7 @@
             // id2
             // 
             this.id2.Location = new System.Drawing.Point(679, 318);
-            this.id2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.id2.Margin = new System.Windows.Forms.Padding(4);
             this.id2.Name = "id2";
             this.id2.Size = new System.Drawing.Size(132, 22);
             this.id2.TabIndex = 23;
@@ -213,7 +216,7 @@
             // id1
             // 
             this.id1.Location = new System.Drawing.Point(679, 113);
-            this.id1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.id1.Margin = new System.Windows.Forms.Padding(4);
             this.id1.Name = "id1";
             this.id1.Size = new System.Drawing.Size(132, 22);
             this.id1.TabIndex = 21;
@@ -232,7 +235,7 @@
             // 
             this.partida.AutoSize = true;
             this.partida.Location = new System.Drawing.Point(619, 271);
-            this.partida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.partida.Margin = new System.Windows.Forms.Padding(4);
             this.partida.Name = "partida";
             this.partida.Size = new System.Drawing.Size(271, 21);
             this.partida.TabIndex = 19;
@@ -244,7 +247,7 @@
             // 
             this.NombresGanadores.AutoSize = true;
             this.NombresGanadores.Location = new System.Drawing.Point(619, 188);
-            this.NombresGanadores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NombresGanadores.Margin = new System.Windows.Forms.Padding(4);
             this.NombresGanadores.Name = "NombresGanadores";
             this.NombresGanadores.Size = new System.Drawing.Size(232, 21);
             this.NombresGanadores.TabIndex = 18;
@@ -256,7 +259,7 @@
             // 
             this.NombresPartida.AutoSize = true;
             this.NombresPartida.Location = new System.Drawing.Point(619, 60);
-            this.NombresPartida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NombresPartida.Margin = new System.Windows.Forms.Padding(4);
             this.NombresPartida.Name = "NombresPartida";
             this.NombresPartida.Size = new System.Drawing.Size(410, 21);
             this.NombresPartida.TabIndex = 17;
@@ -276,7 +279,7 @@
             // 
             // listaUsuarios
             // 
-            this.listaUsuarios.Location = new System.Drawing.Point(441, 391);
+            this.listaUsuarios.Location = new System.Drawing.Point(12, 420);
             this.listaUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.listaUsuarios.Name = "listaUsuarios";
             this.listaUsuarios.Size = new System.Drawing.Size(362, 28);
@@ -285,11 +288,41 @@
             this.listaUsuarios.UseVisualStyleBackColor = true;
             this.listaUsuarios.Click += new System.EventHandler(this.listaUsuarios_Click);
             // 
+            // Conectadoslbl
+            // 
+            this.Conectadoslbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Conectadoslbl.Location = new System.Drawing.Point(12, 255);
+            this.Conectadoslbl.Name = "Conectadoslbl";
+            this.Conectadoslbl.Size = new System.Drawing.Size(379, 161);
+            this.Conectadoslbl.TabIndex = 36;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 228);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(135, 17);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Lista de conectados";
+            // 
+            // desconectar
+            // 
+            this.desconectar.Location = new System.Drawing.Point(495, 414);
+            this.desconectar.Name = "desconectar";
+            this.desconectar.Size = new System.Drawing.Size(117, 28);
+            this.desconectar.TabIndex = 38;
+            this.desconectar.Text = "Desconectar";
+            this.desconectar.UseVisualStyleBackColor = true;
+            this.desconectar.Click += new System.EventHandler(this.desconectar_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 454);
+            this.Controls.Add(this.desconectar);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.Conectadoslbl);
             this.Controls.Add(this.listaUsuarios);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.query);
@@ -349,6 +382,9 @@
         private System.Windows.Forms.RadioButton NombresPartida;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button listaUsuarios;
+        private System.Windows.Forms.Label Conectadoslbl;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button desconectar;
     }
 }
 

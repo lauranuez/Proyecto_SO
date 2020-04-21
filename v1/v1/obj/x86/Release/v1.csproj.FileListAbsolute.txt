@@ -1,0 +1,8 @@
+C:\Users\Hector\Desktop\Uni\SO\Proyecto SO\Proyecto_SO-master\v1\v1\obj\x86\Release\v1.Inicio.resources
+C:\Users\Hector\Desktop\Uni\SO\Proyecto SO\Proyecto_SO-master\v1\v1\obj\x86\Release\v1.Properties.Resources.resources
+C:\Users\Hector\Desktop\Uni\SO\Proyecto SO\Proyecto_SO-master\v1\v1\obj\x86\Release\v1.csproj.GenerateResource.Cache
+C:\Users\Hector\Desktop\Uni\SO\Proyecto SO\Proyecto_SO-master\v1\v1\bin\Release\v1.exe
+C:\Users\Hector\Desktop\Uni\SO\Proyecto SO\Proyecto_SO-master\v1\v1\bin\Release\v1.pdb
+C:\Users\Hector\Desktop\Uni\SO\Proyecto SO\Proyecto_SO-master\v1\v1\obj\x86\Release\v1.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\Uni\SO\Proyecto SO\Proyecto_SO-master\v1\v1\obj\x86\Release\v1.exe
+C:\Users\Hector\Desktop\Uni\SO\Proyecto SO\Proyecto_SO-master\v1\v1\obj\x86\Release\v1.pdb
