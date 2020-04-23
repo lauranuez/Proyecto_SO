@@ -55,6 +55,7 @@
             this.Conectadoslbl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.desconectar = new System.Windows.Forms.Button();
+            this.Conectar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // aceptarBtn
@@ -315,11 +316,22 @@
             this.desconectar.UseVisualStyleBackColor = true;
             this.desconectar.Click += new System.EventHandler(this.desconectar_Click);
             // 
+            // Conectar
+            // 
+            this.Conectar.Location = new System.Drawing.Point(495, 371);
+            this.Conectar.Name = "Conectar";
+            this.Conectar.Size = new System.Drawing.Size(117, 28);
+            this.Conectar.TabIndex = 39;
+            this.Conectar.Text = "Conectar";
+            this.Conectar.UseVisualStyleBackColor = true;
+            this.Conectar.Click += new System.EventHandler(this.Conectar_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 454);
+            this.Controls.Add(this.Conectar);
             this.Controls.Add(this.desconectar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Conectadoslbl);
@@ -385,6 +397,7 @@
         private System.Windows.Forms.Label Conectadoslbl;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button desconectar;
+        private System.Windows.Forms.Button Conectar;
     }
 }
 
