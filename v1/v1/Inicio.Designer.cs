@@ -51,19 +51,16 @@
             this.NombresGanadores = new System.Windows.Forms.RadioButton();
             this.NombresPartida = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
-            this.listaUsuarios = new System.Windows.Forms.Button();
             this.Conectadoslbl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.desconectar = new System.Windows.Forms.Button();
-            this.Conectar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // aceptarBtn
             // 
-            this.aceptarBtn.Location = new System.Drawing.Point(167, 192);
-            this.aceptarBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.aceptarBtn.Location = new System.Drawing.Point(125, 156);
+            this.aceptarBtn.Margin = new System.Windows.Forms.Padding(2);
             this.aceptarBtn.Name = "aceptarBtn";
-            this.aceptarBtn.Size = new System.Drawing.Size(75, 25);
+            this.aceptarBtn.Size = new System.Drawing.Size(56, 20);
             this.aceptarBtn.TabIndex = 1;
             this.aceptarBtn.Text = "Aceptar";
             this.aceptarBtn.UseVisualStyleBackColor = true;
@@ -71,61 +68,64 @@
             // 
             // usuario_tBx
             // 
-            this.usuario_tBx.Location = new System.Drawing.Point(140, 58);
-            this.usuario_tBx.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.usuario_tBx.Location = new System.Drawing.Point(105, 47);
+            this.usuario_tBx.Margin = new System.Windows.Forms.Padding(2);
             this.usuario_tBx.Name = "usuario_tBx";
-            this.usuario_tBx.Size = new System.Drawing.Size(100, 22);
+            this.usuario_tBx.Size = new System.Drawing.Size(76, 20);
             this.usuario_tBx.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 63);
+            this.label1.Location = new System.Drawing.Point(28, 51);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Usuario";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 108);
+            this.label2.Location = new System.Drawing.Point(28, 88);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 17);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Contraseña";
             // 
             // contraseña_txB
             // 
-            this.contraseña_txB.Location = new System.Drawing.Point(140, 103);
-            this.contraseña_txB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.contraseña_txB.Location = new System.Drawing.Point(105, 84);
+            this.contraseña_txB.Margin = new System.Windows.Forms.Padding(2);
             this.contraseña_txB.Name = "contraseña_txB";
-            this.contraseña_txB.Size = new System.Drawing.Size(100, 22);
+            this.contraseña_txB.Size = new System.Drawing.Size(76, 20);
             this.contraseña_txB.TabIndex = 5;
             // 
             // edadRe_TB
             // 
-            this.edadRe_TB.Location = new System.Drawing.Point(441, 135);
-            this.edadRe_TB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.edadRe_TB.Location = new System.Drawing.Point(331, 110);
+            this.edadRe_TB.Margin = new System.Windows.Forms.Padding(2);
             this.edadRe_TB.Name = "edadRe_TB";
-            this.edadRe_TB.Size = new System.Drawing.Size(100, 22);
+            this.edadRe_TB.Size = new System.Drawing.Size(76, 20);
             this.edadRe_TB.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(351, 135);
+            this.label3.Location = new System.Drawing.Point(263, 110);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 17);
+            this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "edad";
             // 
             // enviar_Btn
             // 
-            this.enviar_Btn.Location = new System.Drawing.Point(468, 193);
-            this.enviar_Btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.enviar_Btn.Location = new System.Drawing.Point(351, 157);
+            this.enviar_Btn.Margin = new System.Windows.Forms.Padding(2);
             this.enviar_Btn.Name = "enviar_Btn";
-            this.enviar_Btn.Size = new System.Drawing.Size(75, 23);
+            this.enviar_Btn.Size = new System.Drawing.Size(56, 19);
             this.enviar_Btn.TabIndex = 11;
             this.enviar_Btn.Text = "enviar";
             this.enviar_Btn.UseVisualStyleBackColor = true;
@@ -134,44 +134,47 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(351, 63);
+            this.label4.Location = new System.Drawing.Point(263, 51);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 17);
+            this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "usuario";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(351, 101);
+            this.label5.Location = new System.Drawing.Point(263, 82);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 17);
+            this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "contraseña";
             // 
             // usuarioRe_TB
             // 
-            this.usuarioRe_TB.Location = new System.Drawing.Point(441, 58);
-            this.usuarioRe_TB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.usuarioRe_TB.Location = new System.Drawing.Point(331, 47);
+            this.usuarioRe_TB.Margin = new System.Windows.Forms.Padding(2);
             this.usuarioRe_TB.Name = "usuarioRe_TB";
-            this.usuarioRe_TB.Size = new System.Drawing.Size(100, 22);
+            this.usuarioRe_TB.Size = new System.Drawing.Size(76, 20);
             this.usuarioRe_TB.TabIndex = 8;
             // 
             // contraseñaRe_TB
             // 
-            this.contraseñaRe_TB.Location = new System.Drawing.Point(441, 96);
-            this.contraseñaRe_TB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.contraseñaRe_TB.Location = new System.Drawing.Point(331, 78);
+            this.contraseñaRe_TB.Margin = new System.Windows.Forms.Padding(2);
             this.contraseñaRe_TB.Name = "contraseñaRe_TB";
-            this.contraseñaRe_TB.Size = new System.Drawing.Size(100, 22);
+            this.contraseñaRe_TB.Size = new System.Drawing.Size(76, 20);
             this.contraseñaRe_TB.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(136, 11);
+            this.label6.Location = new System.Drawing.Point(102, 9);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 20);
+            this.label6.Size = new System.Drawing.Size(61, 17);
             this.label6.TabIndex = 14;
             this.label6.Text = "LOG IN";
             // 
@@ -179,18 +182,18 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(437, 11);
+            this.label7.Location = new System.Drawing.Point(328, 9);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 20);
+            this.label7.Size = new System.Drawing.Size(65, 17);
             this.label7.TabIndex = 15;
             this.label7.Text = "SIGN IN";
             // 
             // query
             // 
-            this.query.Location = new System.Drawing.Point(908, 391);
-            this.query.Margin = new System.Windows.Forms.Padding(4);
+            this.query.Location = new System.Drawing.Point(681, 318);
             this.query.Name = "query";
-            this.query.Size = new System.Drawing.Size(117, 28);
+            this.query.Size = new System.Drawing.Size(88, 23);
             this.query.TabIndex = 32;
             this.query.Text = "CONSULTAR";
             this.query.UseVisualStyleBackColor = true;
@@ -198,47 +201,42 @@
             // 
             // id2
             // 
-            this.id2.Location = new System.Drawing.Point(679, 318);
-            this.id2.Margin = new System.Windows.Forms.Padding(4);
+            this.id2.Location = new System.Drawing.Point(509, 258);
             this.id2.Name = "id2";
-            this.id2.Size = new System.Drawing.Size(132, 22);
+            this.id2.Size = new System.Drawing.Size(100, 20);
             this.id2.TabIndex = 23;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(620, 321);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(465, 261);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(25, 17);
+            this.label12.Size = new System.Drawing.Size(21, 13);
             this.label12.TabIndex = 22;
             this.label12.Text = "ID:";
             // 
             // id1
             // 
-            this.id1.Location = new System.Drawing.Point(679, 113);
-            this.id1.Margin = new System.Windows.Forms.Padding(4);
+            this.id1.Location = new System.Drawing.Point(509, 92);
             this.id1.Name = "id1";
-            this.id1.Size = new System.Drawing.Size(132, 22);
+            this.id1.Size = new System.Drawing.Size(100, 20);
             this.id1.TabIndex = 21;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(620, 117);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(465, 95);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(25, 17);
+            this.label13.Size = new System.Drawing.Size(21, 13);
             this.label13.TabIndex = 20;
             this.label13.Text = "ID:";
             // 
             // partida
             // 
             this.partida.AutoSize = true;
-            this.partida.Location = new System.Drawing.Point(619, 271);
-            this.partida.Margin = new System.Windows.Forms.Padding(4);
+            this.partida.Location = new System.Drawing.Point(464, 220);
             this.partida.Name = "partida";
-            this.partida.Size = new System.Drawing.Size(271, 21);
+            this.partida.Size = new System.Drawing.Size(204, 17);
             this.partida.TabIndex = 19;
             this.partida.TabStop = true;
             this.partida.Text = "Dame los datos de la siguiente partida";
@@ -247,10 +245,9 @@
             // NombresGanadores
             // 
             this.NombresGanadores.AutoSize = true;
-            this.NombresGanadores.Location = new System.Drawing.Point(619, 188);
-            this.NombresGanadores.Margin = new System.Windows.Forms.Padding(4);
+            this.NombresGanadores.Location = new System.Drawing.Point(464, 153);
             this.NombresGanadores.Name = "NombresGanadores";
-            this.NombresGanadores.Size = new System.Drawing.Size(232, 21);
+            this.NombresGanadores.Size = new System.Drawing.Size(175, 17);
             this.NombresGanadores.TabIndex = 18;
             this.NombresGanadores.TabStop = true;
             this.NombresGanadores.Text = "Muestrame todos los ganadores";
@@ -259,10 +256,9 @@
             // NombresPartida
             // 
             this.NombresPartida.AutoSize = true;
-            this.NombresPartida.Location = new System.Drawing.Point(619, 60);
-            this.NombresPartida.Margin = new System.Windows.Forms.Padding(4);
+            this.NombresPartida.Location = new System.Drawing.Point(464, 49);
             this.NombresPartida.Name = "NombresPartida";
-            this.NombresPartida.Size = new System.Drawing.Size(410, 21);
+            this.NombresPartida.Size = new System.Drawing.Size(305, 17);
             this.NombresPartida.TabIndex = 17;
             this.NombresPartida.TabStop = true;
             this.NombresPartida.Text = "Muestra los nombres de los jugadoresde la siguiente partida";
@@ -272,70 +268,39 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(756, 11);
+            this.label14.Location = new System.Drawing.Point(567, 9);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 20);
+            this.label14.Size = new System.Drawing.Size(72, 17);
             this.label14.TabIndex = 33;
             this.label14.Text = "QUERYS";
-            // 
-            // listaUsuarios
-            // 
-            this.listaUsuarios.Location = new System.Drawing.Point(12, 420);
-            this.listaUsuarios.Margin = new System.Windows.Forms.Padding(4);
-            this.listaUsuarios.Name = "listaUsuarios";
-            this.listaUsuarios.Size = new System.Drawing.Size(362, 28);
-            this.listaUsuarios.TabIndex = 34;
-            this.listaUsuarios.Text = "CONSULTAR LISTA DE USUARIOS CONECTADOS";
-            this.listaUsuarios.UseVisualStyleBackColor = true;
-            this.listaUsuarios.Click += new System.EventHandler(this.listaUsuarios_Click);
             // 
             // Conectadoslbl
             // 
             this.Conectadoslbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Conectadoslbl.Location = new System.Drawing.Point(12, 255);
+            this.Conectadoslbl.Location = new System.Drawing.Point(9, 207);
+            this.Conectadoslbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Conectadoslbl.Name = "Conectadoslbl";
-            this.Conectadoslbl.Size = new System.Drawing.Size(379, 161);
+            this.Conectadoslbl.Size = new System.Drawing.Size(285, 131);
             this.Conectadoslbl.TabIndex = 36;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 228);
+            this.label9.Location = new System.Drawing.Point(9, 185);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(135, 17);
+            this.label9.Size = new System.Drawing.Size(103, 13);
             this.label9.TabIndex = 37;
             this.label9.Text = "Lista de conectados";
             // 
-            // desconectar
-            // 
-            this.desconectar.Location = new System.Drawing.Point(495, 414);
-            this.desconectar.Name = "desconectar";
-            this.desconectar.Size = new System.Drawing.Size(117, 28);
-            this.desconectar.TabIndex = 38;
-            this.desconectar.Text = "Desconectar";
-            this.desconectar.UseVisualStyleBackColor = true;
-            this.desconectar.Click += new System.EventHandler(this.desconectar_Click);
-            // 
-            // Conectar
-            // 
-            this.Conectar.Location = new System.Drawing.Point(495, 371);
-            this.Conectar.Name = "Conectar";
-            this.Conectar.Size = new System.Drawing.Size(117, 28);
-            this.Conectar.TabIndex = 39;
-            this.Conectar.Text = "Conectar";
-            this.Conectar.UseVisualStyleBackColor = true;
-            this.Conectar.Click += new System.EventHandler(this.Conectar_Click);
-            // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 454);
-            this.Controls.Add(this.Conectar);
-            this.Controls.Add(this.desconectar);
+            this.ClientSize = new System.Drawing.Size(793, 369);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Conectadoslbl);
-            this.Controls.Add(this.listaUsuarios);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.query);
             this.Controls.Add(this.id2);
@@ -359,10 +324,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.usuario_tBx);
             this.Controls.Add(this.aceptarBtn);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Inicio";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inicio_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Inicio_FormClosed);
+            this.Load += new System.EventHandler(this.Inicio_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,11 +360,8 @@
         private System.Windows.Forms.RadioButton NombresGanadores;
         private System.Windows.Forms.RadioButton NombresPartida;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button listaUsuarios;
         private System.Windows.Forms.Label Conectadoslbl;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button desconectar;
-        private System.Windows.Forms.Button Conectar;
     }
 }
 

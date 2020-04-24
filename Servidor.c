@@ -10,6 +10,8 @@
 
 typedef struct{
 	char usuario[20];
+	int socket;
+	
 } Conectado;
 
 typedef struct{
@@ -130,15 +132,15 @@ void *AtenderCliente (void *socket)
 		
 		if (codigo==0)
 		{
-			char usuario;
+			char usuario[20];
 			p=strtok(NULL, "/");
-			strcpy(&usuario, p);
+			strcpy(usuario, p);
 			pthread_mutex_lock( &mutex );
-			int eliminar = DesconectarUsuario(&UsuariosConectados, &usuario);
+			int eliminar = DesconectarUsuario(&UsuariosConectados, usuario);
 			pthread_mutex_unlock( &mutex );
-			sprintf(notificacion,"6/%s", UsuariosConectados.usuarios[0].usuario);
-			for(int j=1; j< UsuariosConectados.num; j++)
-				sprintf(notificacion,"%s, %s", notificacion, UsuariosConectados.usuarios[j].usuario);
+			char conectados[300];
+			DameConectados(&UsuariosConectados, conectados); 
+			sprintf(notificacion,"%s", conectados);
 			for(int k=0; k<i; k++)
 				write (sockets[k], notificacion, strlen(notificacion));
 			if (eliminar==0)
@@ -179,16 +181,15 @@ void *AtenderCliente (void *socket)
 							
 							pthread_mutex_lock( &mutex ); //No me interrumpe ahora
 							int res = Add(&UsuariosConectados,usuario);
-							pthread_mutex_unlock( &mutex );
-							sprintf(notificacion,"6/%s", UsuariosConectados.usuarios[0].usuario);
+							pthread_mutex_unlock(&mutex);
+							sprintf(notificacion,"6/%s",UsuariosConectados.usuarios[0].usuario);
 							for(int j=1; j< UsuariosConectados.num; j++)
 								sprintf(notificacion,"%s, %s", notificacion, UsuariosConectados.usuarios[j].usuario);
 							for(int k=0; k<i; k++)
 								write (sockets[k], notificacion, strlen(notificacion));
-							
 							if (res==0)
 							{
-								printf("El usuario %s se ha añadido a la lista de conectados \n", usuario);
+								printf("El usuario %s se ha añadido a la lista de conectados \n", usuario );
 							}
 							else
 								printf("La lista de usuarios esta llena");

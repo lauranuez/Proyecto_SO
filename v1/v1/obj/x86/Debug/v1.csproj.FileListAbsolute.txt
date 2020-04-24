@@ -84,3 +84,11 @@ C:\Users\Hector\Desktop\Uni\SO\Repositorio GitHub Proyecto SO\Proyecto_SO\v1\v1\
 C:\Users\Hector\Desktop\Uni\SO\Repositorio GitHub Proyecto SO\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
 C:\Users\Hector\Desktop\Uni\SO\Repositorio GitHub Proyecto SO\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
 C:\Users\Hector\Desktop\Uni\SO\Repositorio GitHub Proyecto SO\Proyecto_SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.Cache
+Z:\PSO\v1\v1\bin\Debug\v1.exe
+Z:\PSO\v1\v1\bin\Debug\v1.pdb
+Z:\PSO\v1\v1\obj\x86\Debug\v1.csprojAssemblyReference.cache
+Z:\PSO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+Z:\PSO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+Z:\PSO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.cache
+Z:\PSO\v1\v1\obj\x86\Debug\v1.exe
+Z:\PSO\v1\v1\obj\x86\Debug\v1.pdb

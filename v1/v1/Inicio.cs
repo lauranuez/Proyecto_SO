@@ -21,7 +21,26 @@ namespace v1
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-         
+            IPAddress direc = IPAddress.Parse("192.168.56.101");
+            IPEndPoint ipep = new IPEndPoint(direc, 9050);
+
+            //Creamos el socket 
+            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
+            {
+                server.Connect(ipep);//Intentamos conectar el socket
+            }
+
+            catch (SocketException)
+            {
+                MessageBox.Show("No se ha podido conectar con el servidor");
+                //Si hay excepcion imprimimos error y salimos del programa con return
+                //Close() ;
+            }
+            ThreadStart ts = delegate { AtenderServidor(); };
+            atender = new Thread(ts);
+            atender.Start();
+
         }
 
         string usuario;
@@ -141,36 +160,25 @@ namespace v1
                 string mensaje = "3/" + id1.Text;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
-
-               
-
-                
-
             }
             else if (NombresGanadores.Checked)
             {
                 string mensaje = "4/";
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-
-                
-                
+                server.Send(msg); 
             }
             else
             {
                 string mensaje = "5/" + id2.Text;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
-
-                
-                
-  
             }
         }
 
 
         private void Inicio_FormClosing(object sender, FormClosingEventArgs e)
         {
+
 
             usuario = usuario_tBx.Text;
             string mensaje = "0/" + usuario;
@@ -181,54 +189,19 @@ namespace v1
             this.BackColor = Color.Gray;
             server.Shutdown(SocketShutdown.Both);
             server.Close();
+
         }
 
-        private void listaUsuarios_Click(object sender, EventArgs e)
-        {
-            string mensaje = "6/";
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
 
-            
-            
+
+        private void Inicio_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
 
-        private void desconectar_Click(object sender, EventArgs e)
+        private void Inicio_Load(object sender, EventArgs e)
         {
-            usuario = usuario_tBx.Text;
-            string mensaje = "0/"+usuario;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
 
-            atender.Abort();
-            this.BackColor = Color.Gray;
-            server.Shutdown(SocketShutdown.Both);
-            server.Close();
-        }
-
-        private void Conectar_Click(object sender, EventArgs e)
-        {
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
-
-            //Creamos el socket 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);//Intentamos conectar el socket
-                this.BackColor = Color.Green;
-                MessageBox.Show("Conectado");
-            }
-
-            catch (SocketException)
-            {
-                MessageBox.Show("No se ha podido conectar con el servidor");
-                //Si hay excepcion imprimimos error y salimos del programa con return
-                //Close() ;
-            }
-            ThreadStart ts = delegate { AtenderServidor(); };
-            atender = new Thread(ts);
-            atender.Start();
         }
     }
 }
