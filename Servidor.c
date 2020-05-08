@@ -14,7 +14,6 @@ typedef struct{
 	
 } Conectado;
 
-
 typedef struct{
 	Conectado usuarios[300];
 	int num;
@@ -22,20 +21,21 @@ typedef struct{
 
 ListaConectados UsuariosConectados;
 
+//Estructura necesaria para acceso excluyente
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 int i;
 int sockets[100];
 char notificacion[512];
 
-int Add (ListaConectados *lista, char nombre[20], int socket)
+int Add (ListaConectados *lista, char nombre[20])
+//Añade el usuario que se a conectado a la lista
 {
 	
 	if (lista->num == 300)
 		return -1;
 	else {
 		strcpy(lista->usuarios[lista->num].usuario, nombre);
-		lista->usuarios[lista->num].socket = socket;
 		lista->num++;
 		return 0;
 		
@@ -49,6 +49,9 @@ void DameConectados (ListaConectados *lista, char conectados[512])
 	sprintf(conectados,"6/%s", lista->usuarios[0].usuario);
 	for(int j=1; j< lista->num; j++)
 		sprintf(conectados,"%s, %s", conectados, lista->usuarios[j].usuario);
+	//for(int k=0; k<i; k++)
+		//write (sockets[k], conectados, strlen(conectados));
+		
 }
 
 int DesconectarUsuario(ListaConectados *lista, char nombre[20])
@@ -73,26 +76,6 @@ int DesconectarUsuario(ListaConectados *lista, char nombre[20])
 		return -1;
 		
 	
-	
-}
-
-int DameSocket(ListaConectados *l, char nom[20])	
-{
-	int found = 0;
-	int i = 0;
-	while ((found==0) & (i < l->num))
-	{
-		if (strcmp(l->usuarios[i].usuario,nom) == 0)
-		{
-			found = 1;
-		}
-		else
-			i = i + 1;
-	}
-	if (found==1)
-		return l->usuarios[i].socket;
-	else
-		return -1;
 }
 
 void *AtenderCliente (void *socket)
@@ -131,14 +114,15 @@ void *AtenderCliente (void *socket)
 	int terminar=0;
 	while (terminar==0)
 	{
-		
+		// Ahora recibimos su nombre, que dejamos en buff
 		ret=read(sock_conn,peticion, sizeof(peticion));
 		printf ("Recibido\n");
 		
-		
+		// Tenemos que a?adirle la marca de fin de string 
+		// para que no escriba lo que hay despues en el buffer
 		peticion[ret]='\0';
 		
-	
+		//Escribimos el nombre en la consola
 		
 		printf ("Se ha conectado: %s\n",peticion);
 		
@@ -146,8 +130,8 @@ void *AtenderCliente (void *socket)
 		int codigo =  atoi (p);
 		printf("codigo= %d\n",codigo);
 		
-		if (codigo==0) //Desconectar Usuario
-		{ 
+		if (codigo==0)
+		{
 			char usuario[20];
 			p=strtok(NULL, "/");
 			strcpy(usuario, p);
@@ -166,7 +150,7 @@ void *AtenderCliente (void *socket)
 			terminar=1;
 		}
 		
-		if(codigo==1) //Conectar 
+		if(codigo==1)
 		{
 			char usuario[20];
 			char password[20];
@@ -195,8 +179,8 @@ void *AtenderCliente (void *socket)
 						{
 							strcpy(respuesta,"1/1");
 							
-							pthread_mutex_lock( &mutex ); 
-							int res = Add(&UsuariosConectados,usuario, sock_conn);
+							pthread_mutex_lock( &mutex ); //No me interrumpe ahora
+							int res = Add(&UsuariosConectados,usuario);
 							pthread_mutex_unlock(&mutex);
 							sprintf(notificacion,"6/%s",UsuariosConectados.usuarios[0].usuario);
 							for(int j=1; j< UsuariosConectados.num; j++)
@@ -225,7 +209,7 @@ void *AtenderCliente (void *socket)
 						
 		}
 		
-		if (codigo==2) //Registrar
+		if (codigo==2)
 		{
 			char usuario[20];
 			char password[20];
@@ -272,7 +256,7 @@ void *AtenderCliente (void *socket)
 				sprintf(edads, "%d", edad);
 				strcat (consulta, edads);
 				strcat(consulta, ");");
-				
+				//printf(consulta);
 				err=mysql_query(conn, consulta);
 				if (err!=0)
 				{
@@ -283,15 +267,16 @@ void *AtenderCliente (void *socket)
 			
 		}
 		
-		if (codigo==3) //Consulta1
+		if (codigo==3)
 		{
 			int Npartida;
 			p=strtok(NULL, "/");
 			Npartida=atoi(p);
-			
+			//Pido al usuario que introduzca el nombre de parti
+			//Realizamos la consulta
 			strcpy(consulta,"SELECT * FROM partida");
 			err=mysql_query(conn,consulta);
-			
+			//err=mysql_query(conn,"SELECT relacion.jugador FROM relacion WHERE relacion.partida = 'p1'");
 			if (err!=0)
 			{
 				printf("Error al realizar la consulta %u %s \n", mysql_errno(conn), mysql_error(conn));
@@ -325,7 +310,7 @@ void *AtenderCliente (void *socket)
 		
 		
 		
-		if(codigo==4)//Consulta2
+		if(codigo==4)
 		{
 			err=mysql_query (conn, "SELECT * FROM datos_partida");
 			if (err!=0) 
@@ -356,7 +341,7 @@ void *AtenderCliente (void *socket)
 			
 		}
 		
-		if (codigo==5) //Consulta3
+		if (codigo==5)
 		{
 			int Npartida;
 			p=strtok(NULL, "/");
@@ -393,90 +378,18 @@ void *AtenderCliente (void *socket)
 				sprintf(respuesta, "5/ID: %d, Fecha: %s, Hora final: %s, Duracion: %dmin, Ganador: %s", Npartida,fecha,hf,atoi(row[3]),nme);
 			}
 		}
-	
-		if (codigo == 6) //Invitacion a jugar
-		{   
-			p = strtok(NULL, "/");
-			int numju =  atoi (p);
-			p = strtok( NULL, "/");
-			char invitados[100];
-			char usuario[20];
-			strcpy(invitados,p);
-			p = strtok(NULL, "/");
-			strcpy(usuario,p);
-			p = strtok(NULL, ",");
-			
-			while (p != NULL)
-			{
-				char Invitado[20];
-				strcpy(Invitado,p);
-				int socket = DameSocket(&UsuariosConectados,Invitado);
-				p = strtok(NULL, ",");
-				sprintf(notificacion,"7/%s",usuario);
-				write (socket,notificacion, strlen(notificacion));
-			}
+		if (codigo==6)
+		{
+			DameConectados(&UsuariosConectados, respuesta);
+					
 		}
 		
-		if (codigo == 7) //Invitacion aceptada
-		{
-			char UsuarioRes[20];
-			char UsuarioAcep[20];
-			p = strtok(NULL, ",");
-			strcpy(UsuarioRes,p);
-			p = strtok(NULL, ",");
-			strcpy(UsuarioAcep,p);
-			int socket = DameSocket(&UsuariosConectados,UsuarioRes);
-			sprintf(notificacion,"8/%s",UsuarioAcep);
-			write (socket,notificacion, strlen(notificacion));
-		}
-		
-		if (codigo ==8) //Invitacion rechazada
-		{
-			char UsuarioRes[20];
-			char rechaza[20];
-			p = strtok(NULL, ",");
-			strcpy(UsuarioRes,p);
-			p = strtok(NULL, ",");
-			strcpy(rechaza,p);
-			int socket = DameSocket(&UsuariosConectados,UsuarioRes);
-			sprintf(notificacion,"9/%s",rechaza);
-			write (socket,notificacion, strlen(notificacion));
-		}
-		if (codigo==9) //Empezar partida
-		{
-			char Jugador[20];
-			p = strtok(NULL, ",");
-			
-			while (p != NULL)
-			{
-				strcpy(Jugador,p);
-				int socket = DameSocket(&UsuariosConectados,Jugador);
-				p = strtok(NULL, ",");
-				sprintf(notificacion,"10/%s",Jugador);
-				write (socket,notificacion, strlen(notificacion));
-			}
-			
-		}
-		
-		if ((codigo != 0) && (codigo != 6) && (codigo !=7) && (codigo !=8) && (codigo !=9))
+		if (codigo !=0)
 		{
 			printf ("Respuesta: %s\n", respuesta);
+			// Enviamos la respuesta
 			write (sock_conn,respuesta, strlen(respuesta));
 		}
-		
-/*		if ((codigo == 0) || (codigo == 1))*/
-/*		{*/
-/*			int i;*/
-/*			char conectados[200];*/
-/*			DameConectados(&UsuariosConectados, conectados); */
-/*			sprintf(notificacion,"6/%s", conectados);*/
-/*			for(int j=1; j< UsuariosConectados.num; j++)*/
-/*				sprintf(notificacion,"%s, %s", notificacion, UsuariosConectados.usuarios[j].usuario);*/
-						
-/*			for(int k=0; k<i; k++)*/
-/*				write (sockets[k], notificacion, strlen(notificacion));*/
-/*		}*/
-		
 		
 		respuesta [strlen(respuesta)-1]='\0';
 		
@@ -492,32 +405,42 @@ int main(int argc, char *argv[])
 	int sock_conn, sock_listen;
 	struct sockaddr_in serv_adr;
 	
+	// INICIALITZACIONS
+	// Obrim el socket
 	if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
 		printf("Error creant socket");
-
-	memset(&serv_adr, 0, sizeof(serv_adr));
+	// Fem el bind al port
+		
+	memset(&serv_adr, 0, sizeof(serv_adr));// inicialitza a zero serv_addr
 	serv_adr.sin_family = AF_INET;
 	
-
+	// asocia el socket a cualquiera de las IP de la m?quina. 
+	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
-
+	// escucharemos en el port 9050
 	serv_adr.sin_port = htons(9050);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind\n");
-	
+	//La cola de peticiones pendientes no podr? ser superior a 4
 	if (listen(sock_listen, 2) < 0)
 		printf("Error en el Listen");
 	
 	
 	pthread_t thread[100];
-
+	i=0;
 	for(;;)
 	{
 		printf ("Escuchando\n");
+		
 		sock_conn = accept(sock_listen, NULL, NULL);
 		printf ("He recibido conexion \n");
+		
 		sockets[i] =sock_conn;
+		//sock_conn es el socket que usaremos para este cliente
+		
+		// Crear thead y decirle lo que tiene que hacer	
 		pthread_create (&thread[i], NULL, AtenderCliente,&sockets[i]);
 		i=i+1;
+
 	}
 }

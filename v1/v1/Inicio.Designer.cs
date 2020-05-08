@@ -53,19 +53,11 @@
             this.label14 = new System.Windows.Forms.Label();
             this.Conectadoslbl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.invite = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.deny = new System.Windows.Forms.Button();
-            this.accept = new System.Windows.Forms.Button();
-            this.accept_invitation = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // aceptarBtn
             // 
-            this.aceptarBtn.Location = new System.Drawing.Point(125, 121);
+            this.aceptarBtn.Location = new System.Drawing.Point(125, 156);
             this.aceptarBtn.Margin = new System.Windows.Forms.Padding(2);
             this.aceptarBtn.Name = "aceptarBtn";
             this.aceptarBtn.Size = new System.Drawing.Size(56, 20);
@@ -302,89 +294,11 @@
             this.label9.TabIndex = 37;
             this.label9.Text = "Lista de conectados";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(917, 9);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 17);
-            this.label8.TabIndex = 38;
-            this.label8.Text = "INVITE";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(839, 47);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(0, 13);
-            this.label10.TabIndex = 40;
-            // 
-            // invite
-            // 
-            this.invite.Location = new System.Drawing.Point(920, 182);
-            this.invite.Margin = new System.Windows.Forms.Padding(2);
-            this.invite.Name = "invite";
-            this.invite.Size = new System.Drawing.Size(65, 19);
-            this.invite.TabIndex = 41;
-            this.invite.Text = "INVITAR";
-            this.invite.UseVisualStyleBackColor = true;
-            this.invite.Click += new System.EventHandler(this.invite_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(842, 47);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(210, 109);
-            this.dataGridView1.TabIndex = 42;
-            // 
-            // deny
-            // 
-            this.deny.Location = new System.Drawing.Point(981, 302);
-            this.deny.Margin = new System.Windows.Forms.Padding(2);
-            this.deny.Name = "deny";
-            this.deny.Size = new System.Drawing.Size(71, 19);
-            this.deny.TabIndex = 43;
-            this.deny.Text = "DENEGAR";
-            this.deny.UseVisualStyleBackColor = true;
-            this.deny.Click += new System.EventHandler(this.deny_Click);
-            // 
-            // accept
-            // 
-            this.accept.Location = new System.Drawing.Point(858, 302);
-            this.accept.Margin = new System.Windows.Forms.Padding(2);
-            this.accept.Name = "accept";
-            this.accept.Size = new System.Drawing.Size(75, 19);
-            this.accept.TabIndex = 44;
-            this.accept.Text = "ACEPTAR";
-            this.accept.UseVisualStyleBackColor = true;
-            this.accept.Click += new System.EventHandler(this.accept_Click);
-            // 
-            // accept_invitation
-            // 
-            this.accept_invitation.AutoSize = true;
-            this.accept_invitation.Location = new System.Drawing.Point(855, 265);
-            this.accept_invitation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.accept_invitation.Name = "accept_invitation";
-            this.accept_invitation.Size = new System.Drawing.Size(103, 13);
-            this.accept_invitation.TabIndex = 45;
-            this.accept_invitation.Text = "Lista de conectados";
-            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1112, 369);
-            this.Controls.Add(this.accept_invitation);
-            this.Controls.Add(this.accept);
-            this.Controls.Add(this.deny);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.invite);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label8);
+            this.ClientSize = new System.Drawing.Size(793, 369);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.Conectadoslbl);
             this.Controls.Add(this.label14);
@@ -416,7 +330,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inicio_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Inicio_FormClosed);
             this.Load += new System.EventHandler(this.Inicio_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,13 +362,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label Conectadoslbl;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button invite;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button deny;
-        private System.Windows.Forms.Button accept;
-        private System.Windows.Forms.Label accept_invitation;
     }
 }
 
