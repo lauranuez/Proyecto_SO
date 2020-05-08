@@ -16,11 +16,6 @@ namespace v1
     {
         Socket server;
         Thread atender;
-        int invitaciones;
-        List<string> Aceptados = new List<string>();
-        List<string> Respuestas = new List<string>();
-        int Invitaciones;
-        string UsuarioInvita;
 
         public Inicio()
         {
@@ -97,63 +92,11 @@ namespace v1
                     case 6:
                                 Conectadoslbl.Text=mensaje;
                                 break;
-                    case 7:
-                                accept_invitation.Text = mensaje + " te ha invitado a jugar";
-                                UsuarioInvita = mensaje;
-                                accept.Enabled = true;
-                                deny.Enabled = true;
-                                break;
-                    case 8:
-                                Aceptados.Add(mensaje);
-                                Respuestas.Add(mensaje);
-                                MessageBox.Show(mensaje + " ha aceptado la partida");
-                                if (Invitaciones == Aceptados.Count)
-                                {
-                                    MessageBox.Show("Todos los jugadores han aceptado la partida");
-                                    Empezar_Partida();
-                                }
-                                else if ((Invitaciones == Respuestas.Count()) && (Respuestas.Count != Aceptados.Count()))
-                                {
-                                    MessageBox.Show("Algun jugador ha rechazado la partida");
-                                    invite.Enabled = true;
-                                    Invitaciones = 0;
-                                    Respuestas.Clear();
-                                    Aceptados.Clear();
-
-                                }
-                                break;
-                    case 9:
-                                MessageBox.Show(mensaje + " ha rechazado la partida");
-                                Respuestas.Add(mensaje);
-                                if ((Invitaciones == Respuestas.Count()) && (Respuestas.Count != Aceptados.Count()))
-                                {
-                                    MessageBox.Show("Algun jugador ha rechazado la partida");
-                                    invite.Enabled = true;
-                                    Invitaciones = 0;
-                                    Respuestas.Clear();
-                                    Aceptados.Clear();
-                                }
-                                break;
-                    case 10:
-                                MessageBox.Show("Iniciando partida");
-                                break;
                 }
             }
         }
 
-        private void Empezar_Partida()
-        {
-            string Usuarios = "";
-            int i = 0;
-            foreach (string usuario in Aceptados)
-            {
-                Usuarios = Usuarios + usuario + ",";
-                i = i + 1;
-            }
-            string mensaje = "9/" + Usuarios + usuario_tBx.Text + ',';
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-        }
+
         private void aceptarBtn_Click(object sender, EventArgs e)
         {
             usuario = usuario_tBx.Text;
@@ -258,63 +201,7 @@ namespace v1
 
         private void Inicio_Load(object sender, EventArgs e)
         {
-            
-        }
 
-        private void invite_Click(object sender, EventArgs e)
-        {
-            string invitados = "";
-            bool invitacion = true;
-            int Seleccionados = dataGridView1.SelectedRows.Count;
-            int i = 0;
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                if (Convert.ToString(row.Cells[0].Value) == usuario_tBx.Text)
-                {
-                    MessageBox.Show("No puedes invitarte a ti mismo");
-                    invitacion = false;
-                    break;
-                }
-                else if (Seleccionados - 1 != i)
-                {
-                    invitados = invitados + row.Cells[0].Value + ",";
-                }
-                else
-                {
-                    invitados = invitados + row.Cells[0].Value;
-                }
-                i = i + 1;
-            }
-            if (invitacion == true)
-            {
-                string mensaje = "6/" + Convert.ToString(i + 1) + "/" + usuario_tBx.Text + "/" + invitados;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-                invitaciones = i;
-                invite.Enabled = false;
-            }
-
-
-        }
-
-        private void accept_Click(object sender, EventArgs e)
-        {
-            string mensaje = "7/" + UsuarioInvita + "," + usuario_tBx.Text;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            accept.Enabled = false;
-            deny.Enabled = false;
-            invite.Enabled = false;
-        }
-
-        private void deny_Click(object sender, EventArgs e)
-        {
-            string mensaje = "8/" + UsuarioInvita + "," + usuario_tBx.Text;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            accept.Enabled = false;
-            deny.Enabled = false;
-            invite.Enabled = true;
         }
     }
 }
