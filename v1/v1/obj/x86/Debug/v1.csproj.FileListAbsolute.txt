@@ -92,3 +92,7 @@ Z:\PSO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
 Z:\PSO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.cache
 Z:\PSO\v1\v1\obj\x86\Debug\v1.exe
 Z:\PSO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\PSO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\PSO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\Proyecto_SO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\Proyecto_SO\v1\v1\obj\x86\Debug\v1.pdb
