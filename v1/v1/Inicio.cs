@@ -16,19 +16,24 @@ namespace v1
     {
         Socket server;
         Thread atender;
+        List<string> Aceptados = new List<string>();
+        List<string> Respuestas = new List<string>();
+        int Invitaciones;
+        delegate void DelegadoParaPonerTexto(string texto);
+        string anfitrion;
 
         public Inicio()
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;
             IPAddress direc = IPAddress.Parse("192.168.56.101");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
+            IPEndPoint ipep = new IPEndPoint(direc, 9030);
 
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
                 server.Connect(ipep);//Intentamos conectar el socket
+                CheckForIllegalCrossThreadCalls = false;
             }
 
             catch (SocketException)
@@ -43,6 +48,18 @@ namespace v1
 
         }
 
+        public void PonNoitficacion(string mensaje)
+        {
+            this.accept_invitation.Text = mensaje + " te ha invitado a jugar";
+            anfitrion = mensaje;
+
+        }
+
+        public void PonCon(string mensaje)
+        {
+            this.Conectadoslbl.Text = mensaje;
+        }
+
         string usuario;
         string contraseña;
         int edad;
@@ -55,6 +72,7 @@ namespace v1
                 server.Receive(msg2);
                 string[] trozos = Encoding.ASCII.GetString(msg2).Split('/');
                 int codigo = Convert.ToInt32(trozos[0]);
+
                 string mensaje = trozos[1].Split('\0')[0];
                 
                 switch (codigo)
@@ -90,13 +108,83 @@ namespace v1
                                 MessageBox.Show(mensaje);
                                 break;
                     case 6:
-                                Conectadoslbl.Text=mensaje;
+                                DelegadoParaPonerTexto del = new DelegadoParaPonerTexto(PonCon);
+                                this.Invoke(del, new Object[] { mensaje });
+
+                                string[] str = mensaje.Split('/');
+                                string usuarios = str[0];
+                                string[] Users = usuarios.Split('\n');
+                                
+                                dataGridView1.ColumnCount = 1;
+                                dataGridView1.RowCount = Users.Length;
+                                int i = 0;
+                                foreach (string User in Users)
+                                {
+                                    dataGridView1[0, i].Value = Users[i];
+                                    i = i + 1;
+                                }
+                                break;
+                    case 7:
+                                del = new DelegadoParaPonerTexto(PonNoitficacion);
+                                this.Invoke(del, new Object[] {mensaje});
+                                accept.Enabled = true;
+                                deny.Enabled = true;
+                                break;
+                    case 8:
+                                Aceptados.Add(mensaje);
+                                Respuestas.Add(mensaje);
+                                MessageBox.Show(mensaje + " ha aceptado la partida");
+                                if (Invitaciones == Aceptados.Count)
+                                {
+                                    MessageBox.Show("Todos los jugadores han aceptado la partida");
+                                    Empezar_Partida();
+                                }
+                                else if ((Invitaciones == Respuestas.Count()) && (Respuestas.Count != Aceptados.Count()))
+                                {
+                                    MessageBox.Show("Algun jugador ha rechazado la partida");
+                                    invite.Enabled = true;
+                                    accept.Enabled = true;
+                                    deny.Enabled = true;
+                                    Invitaciones = 0;
+                                    Respuestas.Clear();
+                                    Aceptados.Clear();
+
+                                }
+                                break;
+                    case 9:
+                                MessageBox.Show(mensaje + " ha rechazado la partida");
+                                Respuestas.Add(mensaje);
+                                if ((Invitaciones == Respuestas.Count()) && (Respuestas.Count != Aceptados.Count()))
+                                {
+                                    MessageBox.Show("Algun jugador ha rechazado la partida");
+                                    invite.Enabled = true;
+                                    accept.Enabled = true;
+                                    deny.Enabled = true;
+                                    Invitaciones = 0;
+                                    Respuestas.Clear();
+                                    Aceptados.Clear();
+                                }
+                                break;
+                    case 10:
+                                MessageBox.Show("Iniciando partida");
                                 break;
                 }
             }
         }
 
-
+        private void Empezar_Partida()
+        {
+            string Usuarios = "";
+            int i = 0;
+            foreach (string usuario in Aceptados)
+            {
+                Usuarios = Usuarios + usuario + ",";
+                i = i + 1;
+            }
+            string mensaje = "9/" + Usuarios + usuario_tBx.Text + ',';
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
         private void aceptarBtn_Click(object sender, EventArgs e)
         {
             usuario = usuario_tBx.Text;
@@ -201,7 +289,63 @@ namespace v1
 
         private void Inicio_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void invite_Click(object sender, EventArgs e)
+        {
+            string invitados = null;
+            bool invitacion = true;
+            int Seleccionados = dataGridView1.SelectedRows.Count;
+            int i = 0;
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                if (Convert.ToString(row.Cells[0].Value) ==  usuario_tBx.Text)
+                {
+                    MessageBox.Show("No puedes invitarte a ti mismo");
+                    invitacion = false;
+                    break;
+                }
+                else if (Seleccionados - 1 != i)
+                {
+                    invitados = invitados + row.Cells[0].Value + ",";
+                }
+                else
+                {
+                    invitados = invitados + row.Cells[0].Value;
+                }
+                i = i + 1;
+            }
+            if (invitacion == true)
+            {
+                string mensaje = "6/"  + usuario_tBx.Text + "/" + invitados;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                Invitaciones = i;
+                invite.Enabled = false;
+            }
+
+
+        }
+
+        private void accept_Click(object sender, EventArgs e)
+        {
+            string mensaje = "7/" + anfitrion + "/" + usuario_tBx.Text;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            accept.Enabled = false;
+            deny.Enabled = false;
+            invite.Enabled = false;
+        }
+
+        private void deny_Click(object sender, EventArgs e)
+        {
+            string mensaje = "8/" + anfitrion + "/" + usuario_tBx.Text;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            accept.Enabled = false;
+            deny.Enabled = false;
+            invite.Enabled = true;
         }
     }
 }
