@@ -100,5 +100,92 @@ Z:\PSO (3)\PSO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
 Z:\PSO (3)\PSO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.cache
 Z:\PSO (3)\PSO\v1\v1\obj\x86\Debug\v1.exe
 Z:\PSO (3)\PSO\v1\v1\obj\x86\Debug\v1.pdb
-C:\Users\Usuario\Desktop\SO\Proyecto_SO\v1\v1\obj\x86\Debug\v1.exe
-C:\Users\Usuario\Desktop\SO\Proyecto_SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.Cache
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Partida.resources
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\bin\Debug\v1.exe
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\bin\Debug\v1.pdb
+Z:\Proyecto_SO\v1\v1\bin\Debug\v1.exe
+Z:\Proyecto_SO\v1\v1\bin\Debug\v1.pdb
+Z:\Proyecto_SO\v1\v1\obj\x86\Debug\v1.csprojAssemblyReference.cache
+Z:\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+Z:\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Partida.resources
+Z:\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+Z:\Proyecto_SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.cache
+Z:\Proyecto_SO\v1\v1\obj\x86\Debug\v1.exe
+Z:\Proyecto_SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Consultas.resources
+C:\Users\Usuario\Desktop\SO\pr\Proyecto_SO\v1\v1\obj\x86\Debug\v1.PartidasJugadas.resources
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\bin\Debug\v1.exe
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\bin\Debug\v1.pdb
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Consultas.resources
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Partida.resources
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.PartidasJugadas.resources
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+C:\Users\Hector\Desktop\Uni\SO\Proyecto_SO juego\Proyecto_SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.Cache
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\bin\Debug\v1.exe
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\bin\Debug\v1.pdb
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.csprojResolveAssemblyReference.cache
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.Consultas.resources
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.Partida.resources
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.PartidasJugadas.resources
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+C:\Users\Hector\Desktop\Uni\SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.Cache
+Z:\Proyecto SO\v1\v1\bin\Debug\v1.exe
+Z:\Proyecto SO\v1\v1\bin\Debug\v1.pdb
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.csprojAssemblyReference.cache
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.Consultas.resources
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.Partida.resources
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.PartidasJugadas.resources
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.cache
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.exe
+Z:\Proyecto SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.Consultas.resources
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.Partida.resources
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.PartidasJugadas.resources
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.cache
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\bin\Debug\v1.exe
+C:\Users\Usuario\Desktop\Nueva carpeta (2)\Proyecto SO\v1\v1\bin\Debug\v1.pdb
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\bin\Debug\v1.exe
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\bin\Debug\v1.pdb
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.Consultas.resources
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.Partida.resources
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.PartidasJugadas.resources
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.cache
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\Proyecto SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\bin\Debug\v1.exe
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.csprojAssemblyReference.cache
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.Consultas.resources
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.Inicio.resources
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.Partida.resources
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.PartidasJugadas.resources
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.Properties.Resources.resources
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.csproj.GenerateResource.cache
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.exe
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\obj\x86\Debug\v1.pdb
+C:\Users\Usuario\Desktop\UNI\Proyecto SO\v1\v1\bin\Debug\v1.pdb
