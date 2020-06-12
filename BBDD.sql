@@ -8,7 +8,7 @@ CREATE TABLE datos_jugador (
 )ENGINE=InnoDB;
 
 CREATE TABLE datos_partida (
-    ID INTEGER PRIMARY KEY NOT NULL, 
+    ID INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT, 
     fecha DATE NOT NULL,
     hora_final TIME NOT NULL,
     duracion_min FLOAT NOT NULL,
